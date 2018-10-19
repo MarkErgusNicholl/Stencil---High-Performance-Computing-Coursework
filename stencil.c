@@ -51,55 +51,35 @@ int main(int argc, char *argv[]) {
 
 void stencil(const int nx, const int ny, double *  image, double *  tmp_image) {
   // Case first column first row
-  tmp_image[0] = image[0] * 0.6;
-  tmp_image[0] += image[1] * 0.1;
-  tmp_image[0] += image[0+ny] * 0.1;
+  tmp_image[0] = image[0] * 0.6 + image[1] * 0.1 + image[0+ny] * 0.1;
 
   // Case first column last row
-  tmp_image[ny-1] = image[ny-1] * 0.6;
-  tmp_image[ny-1] += image[ny-2] * 0.1;
-  tmp_image[ny-1] += image[ny-1+ny] * 0.1;
+  tmp_image[ny-1] = image[ny-1] * 0.6 + image[ny-2] * 0.1 + image[ny-1+ny] * 0.1;
 
   // Case last column first row
-  tmp_image[ny*(nx-1)] = image[ny*(nx-1)] * 0.6;
-  tmp_image[ny*(nx-1)] += image[ny*(nx-1)+1] * 0.1;
-  tmp_image[ny*(nx-1)] += image[ny*(nx-1)-ny] * 0.1;
+  tmp_image[ny*(nx-1)] = image[ny*(nx-1)] * 0.6 + image[ny*(nx-1)+1] * 0.1 + image[ny*(nx-1)-ny] * 0.1;
 
   // Case last column last row
-  tmp_image[(nx*ny)-1] = image[(nx*ny)-1] * 0.6;
-  tmp_image[(nx*ny)-1] += image[(nx*ny)-2] * 0.1;
-  tmp_image[(nx*ny)-1] += image[(nx*ny)-ny] * 0.1;
+  tmp_image[(nx*ny)-1] = image[(nx*ny)-1] * 0.6 + image[(nx*ny)-2] * 0.1 + image[(nx*ny)-ny] * 0.1;
 
   // first column
   for (int i = 1; i < ny-1; i++) {
-    tmp_image[i] = image[i] * 0.6;
-    tmp_image[i] += image[i-1] * 0.1;
-    tmp_image[i] += image[i+1] * 0.1;
-    tmp_image[i] += image[i+ny] * 0.1;
+    tmp_image[i] = image[i] * 0.6 + image[i-1] * 0.1 + image[i+1] * 0.1 + image[i+ny] * 0.1;
   }
 
   // last column
   for (int i = 0; i < ny-1; i++) {
-    tmp_image[i+((nx-1)*ny)] = image[i+((nx-1)*ny)] * 0.6;
-    tmp_image[i+((nx-1)*ny)] += image[i+((nx-1)*ny)-1] * 0.1;
-    tmp_image[i+((nx-1)*ny)] += image[i+((nx-1)*ny)+1] * 0.1;
-    tmp_image[i+((nx-1)*ny)] += image[i+((nx-1)*ny)-ny] * 0.1;
+    tmp_image[i+((nx-1)*ny)] = image[i+((nx-1)*ny)] * 0.6 + image[i+((nx-1)*ny)-1] * 0.1 + image[i+((nx-1)*ny)+1] * 0.1 + image[i+((nx-1)*ny)-ny] * 0.1;
   }
 
   // first row
   for (int i = 1; i < nx-1; i++) {
-    tmp_image[i*ny] = image[i*ny] * 0.6;
-    tmp_image[i*ny] += image[(i*ny)+1] * 0.1;
-    tmp_image[i*ny] += image[(i*ny)+ny] * 0.1;
-    tmp_image[i*ny] += image[(i*ny)-ny] * 0.1;
+    tmp_image[i*ny] = image[i*ny] * 0.6 + image[(i*ny)+1] * 0.1 + image[(i*ny)+ny] * 0.1 + image[(i*ny)-ny] * 0.1;
   }
 
   // last row
   for (int i = 1; i < nx-1; i++) {
-    tmp_image[i*ny+(ny-1)] = image[i*ny+(ny-1)] * 0.6;
-    tmp_image[i*ny+(ny-1)] += image[i*ny+(ny-1)-1] * 0.1;
-    tmp_image[i*ny+(ny-1)] += image[i*ny+(ny-1)-ny] * 0.1;
-    tmp_image[i*ny+(ny-1)] += image[i*ny+(ny-1)+ny] * 0.1;
+    tmp_image[i*ny+(ny-1)] = image[i*ny+(ny-1)] * 0.6 + image[i*ny+(ny-1)-1] * 0.1 + image[i*ny+(ny-1)-ny] * 0.1 + image[i*ny+(ny-1)+ny] * 0.1;
   }
 
   // middle boxes
