@@ -85,8 +85,7 @@ void stencil(const int nx, const int ny, double *  image, double *  tmp_image) {
   // middle boxes
   for (int i = 1; i < nx-1; ++i) {
     for (int j = 1; j < ny-1; ++j) {
-      int x = j+i*ny;
-      tmp_image[x] = image[x] * 0.6 + image[x-ny] * 0.1 + image[x+ny] * 0.1 + image[x-1] * 0.1 + image[x+1] * 0.1;
+      tmp_image[j+i*ny] = image[j+i*ny] * 0.6 + image[j+i*ny-ny] * 0.1 + image[j+i*ny+ny] * 0.1 + image[j+i*ny-1] * 0.1 + image[j+i*ny+1] * 0.1;
     }
   }
 }

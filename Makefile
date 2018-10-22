@@ -1,2 +1,2 @@
 stencil: stencil.c
-	gcc -O2 -pg -std=c99 -Wall $^ -o $@
+	gcc -Ofast -std=c11 -Wall $^ -o $@
