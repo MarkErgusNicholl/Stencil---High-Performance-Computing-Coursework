@@ -1,2 +1,2 @@
 stencil: stencil.c
-	gcc -Ofast -std=c11 -Wall $^ -o $@
+	icc -Ofast -xAVX -w -vec-report0 -opt-report0 -std=c11 -Wall $^ -o $@
